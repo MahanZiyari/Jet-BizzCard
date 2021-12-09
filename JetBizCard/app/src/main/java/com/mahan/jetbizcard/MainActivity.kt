@@ -3,6 +3,8 @@ package com.mahan.jetbizcard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -45,12 +47,18 @@ fun BizCard() {
         mutableStateOf(false)
     }
     Surface(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(
+                animationSpec = tween(
+                    durationMillis = 400,
+                    easing = LinearEasing
+                )
+            )
     ) {
         Card(
             modifier = Modifier
                 .width(200.dp)
-                .height(390.dp)
                 .padding(14.dp),
             shape = RoundedCornerShape(corner = CornerSize(16.dp)),
             elevation = 10.dp,
@@ -60,7 +68,6 @@ fun BizCard() {
             )
         ) {
             Column(
-                modifier = Modifier.height(300.dp),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

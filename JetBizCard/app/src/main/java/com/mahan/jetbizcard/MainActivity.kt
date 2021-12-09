@@ -25,6 +25,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.mahan.jetbizcard.ui.components.ProfileImage
+import com.mahan.jetbizcard.ui.components.ProjectItem
 import com.mahan.jetbizcard.ui.theme.JetBizCardTheme
 
 class MainActivity : ComponentActivity() {
@@ -98,40 +100,7 @@ fun BizCard() {
     }
 }
 
-@Composable
-fun ProjectItem(project: Project) {
-    Column {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.White)
-                .padding(8.dp)
-        ) {
-            ProfileImage(
-                modifier = Modifier
-                    .size(80.dp)
-                    .padding(8.dp)
-            )
-            Column(
-                modifier = Modifier
-                    .padding(7.dp)
-                    .align(Alignment.CenterVertically)
-            ) {
-                Text(
-                    text = project.name,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = project.description,
-                    style = MaterialTheme.typography.body2
-                )
-            }
-        }
-        Divider(
-            startIndent = 80.dp
-        )
-    }
-}
+
 
 @Composable
 fun Content() {
@@ -202,36 +171,7 @@ private fun NameText(
     )
 }
 
-@Composable
-private fun ProfileImage(
-    modifier: Modifier = Modifier
-) {
-    Surface(
-        modifier = modifier
-            .size(150.dp)
-            .padding(5.dp),
-        shape = CircleShape,
-        border = BorderStroke(
-            width = 0.5.dp,
-            color = Color.LightGray
-        ),
-        elevation = 4.dp,
-        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.profile_image),
-            contentDescription = "Profile Image",
-            modifier = Modifier.size(135.dp),
-            contentScale = ContentScale.Crop
-        )
-    }
-}
 
-@Preview
-@Composable
-fun ProjectItemPreview() {
-
-}
 
 //@Preview
 @Composable
